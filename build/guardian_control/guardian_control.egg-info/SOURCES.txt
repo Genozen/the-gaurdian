@@ -10,7 +10,11 @@ setup.py
 ../../build/guardian_control/guardian_control.egg-info/zip-safe
 guardian_control/__init__.py
 guardian_control/joy_to_serial_node.py
+guardian_control.egg-info/PKG-INFO
+guardian_control.egg-info/SOURCES.txt
+guardian_control.egg-info/dependency_links.txt
+guardian_control.egg-info/entry_points.txt
+guardian_control.egg-info/requires.txt
+guardian_control.egg-info/top_level.txt
+guardian_control.egg-info/zip-safe
 resource/guardian_control
-test/test_copyright.py
-test/test_flake8.py
-test/test_pep257.py
