@@ -47,8 +47,15 @@ class JoyPrinter(Node):
                 self.ser = None
 
     def send_command(self):
+
+        if self.latest_joy_msg is None:
+            self.get_logger().warn("No joystick input received yet.")
+            return  # Skip sending command until we have data
+            
         left_stick_x = self.latest_joy_msg.axes[6] # left, right
         left_stick_y = self.latest_joy_msg.axes[7] # forward, backward
+        LB_button = self.latest_joy_msg.buttons[4]
+
         if left_stick_y == 1:
             command = 'f'
         elif left_stick_y == -1:
@@ -60,6 +67,10 @@ class JoyPrinter(Node):
         else:
             command = 's'
         print(command)
+
+        # Turn digging motor on
+        if LB_button == 1:
+            command = 'd'
 
         if self.ser and self.ser.is_open:
             # command = self.commands[self.current_index]
@@ -76,6 +87,7 @@ class JoyPrinter(Node):
         self.latest_joy_msg = msg
         left_stick_x = msg.axes[6] # left, right
         left_stick_y = msg.axes[7] # forward, backward
+        LB_button = msg.buttons[4]
 
         # self.get_logger().info(
         #     f"LX: {left_stick_x:.2f}, LY: {left_stick_y:.2f}"
