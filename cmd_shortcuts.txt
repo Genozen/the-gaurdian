@@ -1,0 +1,3 @@
+
+# Setting up Jetson as Hotspot
+nmcli device wifi hotspot ifname wlP1p1s0 ssid JetsonNet password gaurdian123
