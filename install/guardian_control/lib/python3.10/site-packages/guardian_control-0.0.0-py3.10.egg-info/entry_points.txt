@@ -1,0 +1,3 @@
+[console_scripts]
+joy_to_serial_node = guardian_control.joy_to_serial_node:main
+

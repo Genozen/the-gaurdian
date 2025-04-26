@@ -4,6 +4,3 @@ source;share/guardian_control/hook/pythonpath.sh
 source;share/guardian_control/hook/ament_prefix_path.ps1
 source;share/guardian_control/hook/ament_prefix_path.dsv
 source;share/guardian_control/hook/ament_prefix_path.sh
-source;../../build/guardian_control/share/guardian_control/hook/pythonpath_develop.ps1
-source;../../build/guardian_control/share/guardian_control/hook/pythonpath_develop.dsv
-source;../../build/guardian_control/share/guardian_control/hook/pythonpath_develop.sh
