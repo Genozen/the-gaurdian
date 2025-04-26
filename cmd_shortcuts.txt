@@ -1,3 +1,6 @@
 
 # Setting up Jetson as Hotspot
 nmcli device wifi hotspot ifname wlP1p1s0 ssid JetsonNet password gaurdian123
+
+# microROS
+sudo docker run -it --rm -v /dev:/dev -v /dev/shm:/dev/shm --privileged --net=host microros/micro-ros-agent:$ROS_DISTRO serial --dev /dev/ttyACM1 -v6
