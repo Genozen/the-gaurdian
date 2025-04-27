@@ -10,7 +10,7 @@ class JoyPrinter(Node):
         # Setup serial port
         try:
             # self.ser = serial.Serial('/dev/serial/by-id/usb-Arduino_Srl_Arduino_Uno_556393038343517060C1-if00', 9600, timeout=1) # symlink way of pointing. "ls -l /dev/serial/by-id/"
-            self.ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1) #Boron
+            self.ser = serial.Serial('/dev/ttyACM1', 9600, timeout=1) #Boron or GPS sometimes?
             self.get_logger().info("Serial connection established.")
         except serial.SerialException as e:
             self.get_logger().error(f"Failed to open serial port: {e}")

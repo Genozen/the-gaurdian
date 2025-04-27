@@ -4,3 +4,10 @@ nmcli device wifi hotspot ifname wlP1p1s0 ssid JetsonNet password gaurdian123
 
 # microROS
 sudo docker run -it --rm -v /dev:/dev -v /dev/shm:/dev/shm --privileged --net=host microros/micro-ros-agent:$ROS_DISTRO serial --dev /dev/ttyACM1 -v6
+
+
+bascketeball t1 stationed
+t2 go around fail
+t3 same (hiccupse halfcourt back, laptop disconnected)
+t4 3 point line
+t5 halfcour, centerline

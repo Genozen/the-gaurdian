@@ -1,0 +1,24 @@
+[1.477s] Invoking command in '/home/genozen/Documents/the_gaurdian/src/guardian_control': PYTHONPATH=/home/genozen/Documents/the_gaurdian/build/guardian_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/genozen/Documents/the_gaurdian/install/guardian_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/guardian_control build --build-base /home/genozen/Documents/the_gaurdian/build/guardian_control/build install --record /home/genozen/Documents/the_gaurdian/build/guardian_control/install.log --single-version-externally-managed install_data
+[2.036s] running egg_info
+[2.038s] writing ../../build/guardian_control/guardian_control.egg-info/PKG-INFO
+[2.038s] writing dependency_links to ../../build/guardian_control/guardian_control.egg-info/dependency_links.txt
+[2.038s] writing entry points to ../../build/guardian_control/guardian_control.egg-info/entry_points.txt
+[2.039s] writing requirements to ../../build/guardian_control/guardian_control.egg-info/requires.txt
+[2.039s] writing top-level names to ../../build/guardian_control/guardian_control.egg-info/top_level.txt
+[2.043s] reading manifest file '../../build/guardian_control/guardian_control.egg-info/SOURCES.txt'
+[2.048s] writing manifest file '../../build/guardian_control/guardian_control.egg-info/SOURCES.txt'
+[2.048s] running build
+[2.048s] running build_py
+[2.048s] copying guardian_control/joy_to_serial_node.py -> /home/genozen/Documents/the_gaurdian/build/guardian_control/build/lib/guardian_control
+[2.049s] running install
+[2.050s] running install_lib
+[2.052s] copying /home/genozen/Documents/the_gaurdian/build/guardian_control/build/lib/guardian_control/joy_to_serial_node.py -> /home/genozen/Documents/the_gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian_control
+[2.053s] byte-compiling /home/genozen/Documents/the_gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian_control/joy_to_serial_node.py to joy_to_serial_node.cpython-310.pyc
+[2.055s] running install_data
+[2.055s] running install_egg_info
+[2.062s] removing '/home/genozen/Documents/the_gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian_control-0.0.0-py3.10.egg-info' (and everything under it)
+[2.063s] Copying ../../build/guardian_control/guardian_control.egg-info to /home/genozen/Documents/the_gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian_control-0.0.0-py3.10.egg-info
+[2.065s] running install_scripts
+[2.109s] Installing joy_to_serial_node script to /home/genozen/Documents/the_gaurdian/install/guardian_control/lib/guardian_control
+[2.110s] writing list of installed files to '/home/genozen/Documents/the_gaurdian/build/guardian_control/install.log'
+[2.179s] Invoked command in '/home/genozen/Documents/the_gaurdian/src/guardian_control' returned '0': PYTHONPATH=/home/genozen/Documents/the_gaurdian/build/guardian_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/genozen/Documents/the_gaurdian/install/guardian_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/guardian_control build --build-base /home/genozen/Documents/the_gaurdian/build/guardian_control/build install --record /home/genozen/Documents/the_gaurdian/build/guardian_control/install.log --single-version-externally-managed install_data
