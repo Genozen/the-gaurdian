@@ -21,6 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             'joy_to_serial_node = guardian_control.joy_to_serial_node:main',
+            'guardian_nav_node = guardian_control.guardian_nav_node:main',
         ],
     },
 )

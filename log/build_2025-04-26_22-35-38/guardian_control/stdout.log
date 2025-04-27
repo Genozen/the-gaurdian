@@ -1,0 +1,24 @@
+running egg_info
+writing ../../build/guardian_control/guardian_control.egg-info/PKG-INFO
+writing dependency_links to ../../build/guardian_control/guardian_control.egg-info/dependency_links.txt
+writing entry points to ../../build/guardian_control/guardian_control.egg-info/entry_points.txt
+writing requirements to ../../build/guardian_control/guardian_control.egg-info/requires.txt
+writing top-level names to ../../build/guardian_control/guardian_control.egg-info/top_level.txt
+reading manifest file '../../build/guardian_control/guardian_control.egg-info/SOURCES.txt'
+writing manifest file '../../build/guardian_control/guardian_control.egg-info/SOURCES.txt'
+running build
+running build_py
+copying guardian_control/gaurdian_nav_node.py -> /home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/build/lib/guardian_control
+running install
+running install_lib
+copying /home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/build/lib/guardian_control/gaurdian_nav_node.py -> /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian_control
+byte-compiling /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian_control/gaurdian_nav_node.py to gaurdian_nav_node.cpython-310.pyc
+running install_data
+copying package.xml -> /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/share/guardian_control
+running install_egg_info
+removing '/home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian_control-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/guardian_control/guardian_control.egg-info to /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian_control-0.0.0-py3.10.egg-info
+running install_scripts
+Installing gaudian_nav_node script to /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/guardian_control
+Installing joy_to_serial_node script to /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/guardian_control
+writing list of installed files to '/home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/install.log'

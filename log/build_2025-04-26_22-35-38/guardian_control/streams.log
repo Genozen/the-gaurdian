@@ -1,0 +1,26 @@
+[0.350s] Invoking command in '/home/genozen/Documents/the_gaurdian/the-gaurdian/src/guardian_control': PYTHONPATH=/home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/guardian_control build --build-base /home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/build install --record /home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/install.log --single-version-externally-managed install_data
+[0.455s] running egg_info
+[0.456s] writing ../../build/guardian_control/guardian_control.egg-info/PKG-INFO
+[0.456s] writing dependency_links to ../../build/guardian_control/guardian_control.egg-info/dependency_links.txt
+[0.456s] writing entry points to ../../build/guardian_control/guardian_control.egg-info/entry_points.txt
+[0.456s] writing requirements to ../../build/guardian_control/guardian_control.egg-info/requires.txt
+[0.456s] writing top-level names to ../../build/guardian_control/guardian_control.egg-info/top_level.txt
+[0.457s] reading manifest file '../../build/guardian_control/guardian_control.egg-info/SOURCES.txt'
+[0.457s] writing manifest file '../../build/guardian_control/guardian_control.egg-info/SOURCES.txt'
+[0.457s] running build
+[0.457s] running build_py
+[0.457s] copying guardian_control/gaurdian_nav_node.py -> /home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/build/lib/guardian_control
+[0.457s] running install
+[0.458s] running install_lib
+[0.458s] copying /home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/build/lib/guardian_control/gaurdian_nav_node.py -> /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian_control
+[0.458s] byte-compiling /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian_control/gaurdian_nav_node.py to gaurdian_nav_node.cpython-310.pyc
+[0.458s] running install_data
+[0.459s] copying package.xml -> /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/share/guardian_control
+[0.459s] running install_egg_info
+[0.460s] removing '/home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian_control-0.0.0-py3.10.egg-info' (and everything under it)
+[0.460s] Copying ../../build/guardian_control/guardian_control.egg-info to /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian_control-0.0.0-py3.10.egg-info
+[0.460s] running install_scripts
+[0.470s] Installing gaudian_nav_node script to /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/guardian_control
+[0.470s] Installing joy_to_serial_node script to /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/guardian_control
+[0.470s] writing list of installed files to '/home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/install.log'
+[0.480s] Invoked command in '/home/genozen/Documents/the_gaurdian/the-gaurdian/src/guardian_control' returned '0': PYTHONPATH=/home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/guardian_control build --build-base /home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/build install --record /home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/install.log --single-version-externally-managed install_data

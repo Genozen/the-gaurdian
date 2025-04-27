@@ -9,6 +9,7 @@ setup.py
 ../../build/guardian_control/guardian_control.egg-info/top_level.txt
 ../../build/guardian_control/guardian_control.egg-info/zip-safe
 guardian_control/__init__.py
+guardian_control/guardian_nav_node.py
 guardian_control/joy_to_serial_node.py
 resource/guardian_control
 test/test_copyright.py

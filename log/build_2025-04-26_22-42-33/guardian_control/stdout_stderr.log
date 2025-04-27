@@ -1,0 +1,18 @@
+running develop
+running egg_info
+writing guardian_control.egg-info/PKG-INFO
+writing dependency_links to guardian_control.egg-info/dependency_links.txt
+writing entry points to guardian_control.egg-info/entry_points.txt
+writing requirements to guardian_control.egg-info/requires.txt
+writing top-level names to guardian_control.egg-info/top_level.txt
+reading manifest file 'guardian_control.egg-info/SOURCES.txt'
+writing manifest file 'guardian_control.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian-control.egg-link (link to .)
+Installing guadian_nav_node script to /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/guardian_control
+Installing joy_to_serial_node script to /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/guardian_control
+
+Installed /home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control
+running symlink_data
+symbolically linking /home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/resource/guardian_control -> /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/share/ament_index/resource_index/packages
+symbolically linking /home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/package.xml -> /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/share/guardian_control
