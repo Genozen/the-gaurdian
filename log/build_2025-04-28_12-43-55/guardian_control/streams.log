@@ -1,0 +1,18 @@
+[0.295s] Invoking command in '/home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control': PYTHONPATH=/home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/build --no-deps symlink_data
+[0.414s] running develop
+[0.483s] running egg_info
+[0.483s] writing guardian_control.egg-info/PKG-INFO
+[0.483s] writing dependency_links to guardian_control.egg-info/dependency_links.txt
+[0.483s] writing entry points to guardian_control.egg-info/entry_points.txt
+[0.483s] writing requirements to guardian_control.egg-info/requires.txt
+[0.483s] writing top-level names to guardian_control.egg-info/top_level.txt
+[0.484s] reading manifest file 'guardian_control.egg-info/SOURCES.txt'
+[0.484s] writing manifest file 'guardian_control.egg-info/SOURCES.txt'
+[0.485s] running build_ext
+[0.485s] Creating /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian-control.egg-link (link to .)
+[0.485s] Installing guardian_nav_node script to /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/guardian_control
+[0.485s] Installing joy_to_serial_node script to /home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/guardian_control
+[0.485s] 
+[0.485s] Installed /home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control
+[0.485s] running symlink_data
+[0.497s] Invoked command in '/home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control' returned '0': PYTHONPATH=/home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/genozen/Documents/the_gaurdian/the-gaurdian/install/guardian_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/genozen/Documents/the_gaurdian/the-gaurdian/build/guardian_control/build --no-deps symlink_data
