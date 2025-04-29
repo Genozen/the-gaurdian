@@ -34,6 +34,32 @@ def calculate_bearing(curr_lat, curr_lon, target_lat, target_lon):
 
     return bearing_deg_norm
 
+# Computes the distance of two GPS pionts
+# https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula
+def calculate_distance(curr_lat, curr_lon, target_lat, target_lon):
+    """
+    Calculate great-circle distance between two points using haversine formula.
+    Output in meters.
+    """
+    R = 6371000  # Earth's radius in meters
+
+    curr_lat_rad = math.radians(curr_lat)
+    curr_lon_rad = math.radians(curr_lon)
+    target_lat_rad = math.radians(target_lat)
+    lon2_rad = math.radians(target_lon)
+
+    delta_lat = target_lat_rad - curr_lat_rad
+    delta_lon = lon2_rad - curr_lon_rad
+
+    a = math.sin(delta_lat / 2) ** 2 + \
+        math.cos(curr_lat_rad) * math.cos(target_lat_rad) * math.sin(delta_lon / 2) ** 2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+    distance = R * c
+
+    return distance
+    
+
 def compute_heading_error(target_deg, curr_deg):
     deg_error = curr_deg - target_deg
     return deg_error
@@ -46,9 +72,9 @@ class GuardianNavNode(Node):
         self.target_lon = -1
         self.curr_lat = -1
         self.curr_lon = -1
-        self.yaw_deg = -999
-        self.heading_error = -999
-        self.distance = -999
+        self.yaw_deg = -999 # degree
+        self.heading_error = -999 # degree
+        self.distance = -999 # meters
 
         qos_profile = QoSProfile(
             reliability=ReliabilityPolicy.BEST_EFFORT,
@@ -77,7 +103,8 @@ class GuardianNavNode(Node):
         )
 
         self.yaw_pub = self.create_publisher(Float32, 'guardian/yaw_deg', 10)
-
+        self.heading_error_pub = self.create_publisher(Float32, 'guardian/heading_error', 10)
+        self.distance_pub = self.create_publisher(Float32, 'guardian/distance', 10)
 
     def gps_callback(self, msg):
         # lat1 = 42.034495
@@ -139,13 +166,17 @@ class GuardianNavNode(Node):
         self.target_lat = msg.x
         self.target_lon = msg.y
 
-        if (self.target_lat != -1) & (self.target_lon != -1):
+        if (self.target_lat != -1) & (self.target_lon != -1) & (self.curr_lat != -1) & (self.curr_lon != -1):
             target_bearing = calculate_bearing(self.curr_lat, self.curr_lon, self.target_lat, self.target_lon)
+            self.distance = calculate_distance(self.curr_lat, self.curr_lon, self.target_lat, self.target_lon)
             if self.yaw_deg != -999:
                 self.heading_error = compute_heading_error(target_bearing, self.yaw_deg)
         
+        self.heading_error_pub.publish(Float32(data=self.heading_error))
+        self.distance_pub.publish(Float32(data=self.distance))
+
         # self.get_logger().info(f"Heading error: {self.target_lat} | {self.target_lon} | {self.curr_lat} | {self.curr_lon}")
-        self.get_logger().info(f"Yaw {self.yaw_deg} | bearing {target_bearing} | heading err {self.heading_error}")
+        # self.get_logger().info(f"Yaw {self.yaw_deg} | bearing {target_bearing} | heading err {self.heading_error}")
 
 def main(args=None):
     rclpy.init(args=args)
