@@ -2,6 +2,7 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Joy
 import serial #from pyserial
+from geometry_msgs.msg import Point
 
 class JoyPrinter(Node):
     def __init__(self):
@@ -17,8 +18,7 @@ class JoyPrinter(Node):
             self.ser = None
 
         # Characters to cycle through for testing
-        self.commands = ['f', 'b', 'l', 'r']
-        self.current_index = 0
+        # self.commands = ['f', 'b', 'l', 'r']
 
         # Heartbeat timer
         self.heartbeat_timer = self.create_timer(1.0, self.send_heartbeat)
@@ -36,6 +36,30 @@ class JoyPrinter(Node):
             10                   # queue size
         )
         self.get_logger().info("Listening to /joy...")
+
+        self.target_pub = self.create_publisher(Point, '/guardian/target_gps', 10)
+
+
+        # lat1 = 42.034495
+        # lon1 = -87.912657
+        # lat2 = 42.034752
+        # lon2 = -87.912656
+        # lat3 = 42.034752
+        # lon3 = -87.912473
+        # lat4 = 42.034494
+        # lon4 = -87.912473
+        # lat5 = 42.034751
+        # lon5 = -87.912800
+        # lat6 = 42.034496
+        # lon6 = -87.912789
+
+        # testing fake waypoint
+        self.target_waypoint = Point()
+        self.target_waypoint.x = 42.034752
+        self.target_waypoint.y = -87.912656
+        self.target_waypoint.z = 0.0 #unused
+
+
 
     def send_heartbeat(self):
         if self.ser and self.ser.is_open:
@@ -78,10 +102,8 @@ class JoyPrinter(Node):
             command = 'w'
 
         if self.ser and self.ser.is_open:
-            # command = self.commands[self.current_index]
             self.ser.write((command + '\n').encode('utf-8'))
             self.get_logger().info(f"Sent command: {command}")
-            self.current_index = (self.current_index + 1) % len(self.commands)
         else:
             self.get_logger().warn("Serial not open.")
         # pass
@@ -95,6 +117,8 @@ class JoyPrinter(Node):
         LB_button = msg.buttons[4]
         RB_button = msg.buttons[5]
 
+        self.target_pub.publish(self.target_waypoint)
+        self.get_logger().info(f"Published target GPS: lat={self.target_waypoint.x}, lon={self.target_waypoint.y}")
         # self.get_logger().info(
         #     f"LX: {left_stick_x:.2f}, LY: {left_stick_y:.2f}"
         # )
