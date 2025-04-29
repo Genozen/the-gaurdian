@@ -72,9 +72,9 @@ class GuardianNavNode(Node):
         self.target_lon = -1
         self.curr_lat = -1
         self.curr_lon = -1
-        self.yaw_deg = -999 # degree
-        self.heading_error = -999 # degree
-        self.distance = -999 # meters
+        self.yaw_deg = float(-999) # degree
+        self.heading_error = float(-999) # degree
+        self.distance = float(-999) # meters
 
         qos_profile = QoSProfile(
             reliability=ReliabilityPolicy.BEST_EFFORT,

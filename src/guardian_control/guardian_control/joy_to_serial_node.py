@@ -3,6 +3,7 @@ from rclpy.node import Node
 from sensor_msgs.msg import Joy
 import serial #from pyserial
 from geometry_msgs.msg import Point
+from std_msgs.msg import Float32
 
 class JoyPrinter(Node):
     def __init__(self):
@@ -37,8 +38,18 @@ class JoyPrinter(Node):
         )
         self.get_logger().info("Listening to /joy...")
 
-        self.target_pub = self.create_publisher(Point, '/guardian/target_gps', 10)
-
+        self.heading_error_sub = self.create_subscription(
+            Float32, 
+            'guardian/heading_error',
+            self.heading_error_callback,   # callback function
+            10                   # queue size
+        )
+        self.distance_sub = self.create_subscription(
+            Float32, 
+            'guardian/distance',
+            self.distance_callback,   # callback function
+            10                   # queue size
+        )
 
         # lat1 = 42.034495
         # lon1 = -87.912657
@@ -58,7 +69,12 @@ class JoyPrinter(Node):
         self.target_waypoint.x = 42.034752
         self.target_waypoint.y = -87.912656
         self.target_waypoint.z = 0.0 #unused
+        self.heading_error = -999
+        self.distance = -999
+        self.target_waypoint_pub = self.create_publisher(Point, '/guardian/target_gps', 10)
 
+        # flag for autonomous mode
+        self.autonomous_mode = False
 
 
     def send_heartbeat(self):
@@ -77,35 +93,52 @@ class JoyPrinter(Node):
             self.get_logger().warn("No joystick input received yet.")
             return  # Skip sending command until we have data
             
-        left_stick_x = self.latest_joy_msg.axes[6] # left, right
-        left_stick_y = self.latest_joy_msg.axes[7] # forward, backward
+        if self.autonomous_mode == True:
+            DISTANCE_TRESH = 10 # 10 meters to the target
+            DEG_TRESH = 10
+
+            if (self.distance != -999) & (self.heading_error != -999):
+                # start autonomous if curr distance is further from target
+                if self.distance > DISTANCE_TRESH:
+                    if self.heading_error > DEG_TRESH: # Robot is CCW, need to rotate CW
+                        command = 'r'
+                    elif self.heading_error < -DEG_TRESH: # Robot is CW, need to rotate CCW
+                        command = 'l'
+                    else:
+                        command = 'f'
+                else:
+                    command = 's'
+
+        else:
+            left_stick_x = self.latest_joy_msg.axes[6] # left, right
+            left_stick_y = self.latest_joy_msg.axes[7] # forward, backward
+
+            if left_stick_y == 1:
+                command = 'f'
+            elif left_stick_y == -1:
+                command = 'b'
+            elif left_stick_x == 1:
+                command = 'l'
+            elif left_stick_x == -1:
+                command = 'r'
+            else:
+                command = 's'
+
+        # ----- Digging and Water Pump ------
         LB_button = self.latest_joy_msg.buttons[4] # LB, for digging
         RB_button = self.latest_joy_msg.buttons[5] # RB, for water
-
-        if left_stick_y == 1:
-            command = 'f'
-        elif left_stick_y == -1:
-            command = 'b'
-        elif left_stick_x == 1:
-            command = 'l'
-        elif left_stick_x == -1:
-            command = 'r'
-        else:
-            command = 's'
-        print(command)
-
-        # Turn digging motor on
         if LB_button == 1:
             command = 'd'
-
         if RB_button == 1:
             command = 'w'
 
         if self.ser and self.ser.is_open:
             self.ser.write((command + '\n').encode('utf-8'))
-            self.get_logger().info(f"Sent command: {command}")
+            self.get_logger().info(f"Sent command: {command}, heading error {self.heading_error:0.2f}")
         else:
             self.get_logger().warn("Serial not open.")
+
+
         # pass
 
     def joy_callback(self, msg):        
@@ -117,13 +150,26 @@ class JoyPrinter(Node):
         LB_button = msg.buttons[4]
         RB_button = msg.buttons[5]
 
-        self.target_pub.publish(self.target_waypoint)
-        self.get_logger().info(f"Published target GPS: lat={self.target_waypoint.x}, lon={self.target_waypoint.y}")
+        self.target_waypoint_pub.publish(self.target_waypoint)
+
+        button_a = msg.buttons[0] # hold button A to trigger autonomous mode
+        if button_a == 1:
+            self.autonomous_mode = True 
+        # self.get_logger().info(f"Published target GPS: lat={self.target_waypoint.x}, lon={self.target_waypoint.y}")
         # self.get_logger().info(
         #     f"LX: {left_stick_x:.2f}, LY: {left_stick_y:.2f}"
         # )
 
         # pass
+
+    def heading_error_callback(self, msg):
+        self.heading_error = msg.data
+        # self.get_logger().info(f"heading error: {self.heading_error}")
+
+    def distance_callback(self, msg):
+        self.distance = msg.data
+        # self.get_logger().info(f"distance : {self.distance}")
+
 
 def main(args=None):
     rclpy.init(args=args)
