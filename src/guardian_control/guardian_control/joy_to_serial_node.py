@@ -93,6 +93,7 @@ class JoyPrinter(Node):
             self.get_logger().warn("No joystick input received yet.")
             return  # Skip sending command until we have data
             
+        command = 's' # temperary initialize here....
         if self.autonomous_mode == True:
             DISTANCE_TRESH = 10 # 10 meters to the target
             DEG_TRESH = 10
@@ -106,7 +107,7 @@ class JoyPrinter(Node):
                         command = 'l'
                     else:
                         command = 'f'
-                else:
+                else: # goal reached
                     command = 's'
 
         else:
@@ -134,7 +135,7 @@ class JoyPrinter(Node):
 
         if self.ser and self.ser.is_open:
             self.ser.write((command + '\n').encode('utf-8'))
-            self.get_logger().info(f"Sent command: {command}, heading error {self.heading_error:0.2f}")
+            self.get_logger().info(f"Sent command: {command}, heading error {self.heading_error:0.2f}, distance {self.distance:0.2f}")
         else:
             self.get_logger().warn("Serial not open.")
 
@@ -154,7 +155,9 @@ class JoyPrinter(Node):
 
         button_a = msg.buttons[0] # hold button A to trigger autonomous mode
         if button_a == 1:
-            self.autonomous_mode = True 
+            self.autonomous_mode = True
+        else:
+            self.autonomous_mode = False 
         # self.get_logger().info(f"Published target GPS: lat={self.target_waypoint.x}, lon={self.target_waypoint.y}")
         # self.get_logger().info(
         #     f"LX: {left_stick_x:.2f}, LY: {left_stick_y:.2f}"
