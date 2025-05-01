@@ -198,7 +198,7 @@ class JoyPrinter(Node):
                         # if lat != self.target_waypoint.x or lon != self.target_waypoint.y:
                         self.target_waypoint.x = lat
                         self.target_waypoint.y = lon
-                        self.target_waypoint_pub.publish(self.target_waypoint) # this might be a problem, only triggers target GPS callback once...
+                        self.target_waypoint_pub.publish(self.target_waypoint)
                     except json.JSONDecodeError as e:
                         self.get_logger().warn(f"Failsed to parse JSON {e}")
             except serial.SerialException as e:
