@@ -20,3 +20,11 @@ ros2 run guardian_control guardian_nav_node
 ## foxglove launch
 `ros2 launch foxglove_bridge foxglove_bridge_launch.xml`
 # then visualize on https://app.foxglove.dev/genozen/devices
+
+
+# Test GPS Points (Delete this later!!)
+```
+42.034752,-87.912656   (pt 1)
+42.034752,-87.912473   (pt 2)
+42.034494,-87.912473   (pt 3)
+```
