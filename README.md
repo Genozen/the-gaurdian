@@ -23,6 +23,8 @@ ros2 run guardian_control guardian_nav_node
 
 
 # Test GPS Points (Delete this later!!)
+```
 42.034752,-87.912656   (pt 1)
 42.034752,-87.912473   (pt 2)
 42.034494,-87.912473   (pt 3)
+```
