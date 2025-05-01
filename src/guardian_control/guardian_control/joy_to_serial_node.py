@@ -4,6 +4,7 @@ from sensor_msgs.msg import Joy
 import serial #from pyserial
 from geometry_msgs.msg import Point
 from std_msgs.msg import Float32
+import json
 
 class JoyPrinter(Node):
     def __init__(self):
@@ -66,8 +67,8 @@ class JoyPrinter(Node):
 
         # testing fake waypoint
         self.target_waypoint = Point()
-        self.target_waypoint.x = 42.034752
-        self.target_waypoint.y = -87.912656
+        self.target_waypoint.x = 0.0 #42.034752 # Lattitude
+        self.target_waypoint.y = 0.0 #-87.912656 #Longitude
         self.target_waypoint.z = 0.0 #unused
         self.heading_error = -999
         self.distance = -999
@@ -75,6 +76,8 @@ class JoyPrinter(Node):
 
         # flag for autonomous mode
         self.autonomous_mode = False
+        self.serial_buffer = ""
+        self.read_timer = self.create_timer(1, self.read_serial)
 
 
     def send_heartbeat(self):
@@ -151,8 +154,6 @@ class JoyPrinter(Node):
         LB_button = msg.buttons[4]
         RB_button = msg.buttons[5]
 
-        self.target_waypoint_pub.publish(self.target_waypoint)
-
         button_a = msg.buttons[0] # hold button A to trigger autonomous mode
         if button_a == 1:
             self.autonomous_mode = True
@@ -172,6 +173,36 @@ class JoyPrinter(Node):
     def distance_callback(self, msg):
         self.distance = msg.data
         # self.get_logger().info(f"distance : {self.distance}")
+
+    def read_serial(self):
+        if self.ser and self.ser.in_waiting > 0:
+            try:
+                incoming = self.ser.read(self.ser.in_waiting).decode('utf-8', errors='ignore')
+                self.serial_buffer += incoming
+
+                while '^' in self.serial_buffer and '$' in self.serial_buffer:
+                    start = self.serial_buffer.find('^') + 1
+                    end = self.serial_buffer.find('$')
+                    if end == -1:
+                        break
+                    
+                    json_str = self.serial_buffer[start:end]
+                    self.serial_buffer = self.serial_buffer[end + 1:]
+
+                    try:
+                        data = json.loads(json_str)
+                        lat = data.get('lat')
+                        lon = data.get('lon')
+                        self.get_logger().info(f"Received Waypoint from Boron: {lat}, {lon}")
+
+                        # if lat != self.target_waypoint.x or lon != self.target_waypoint.y:
+                        self.target_waypoint.x = lat
+                        self.target_waypoint.y = lon
+                        self.target_waypoint_pub.publish(self.target_waypoint) # this might be a problem, only triggers target GPS callback once...
+                    except json.JSONDecodeError as e:
+                        self.get_logger().warn(f"Failsed to parse JSON {e}")
+            except serial.SerialException as e:
+                self.get_logger().error(f"Serial read error {e}")
 
 
 def main(args=None):

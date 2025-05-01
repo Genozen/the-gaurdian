@@ -161,11 +161,6 @@ class GuardianNavNode(Node):
 
         # self.yaw_pub.publish(Float32(data=yaw_degrees_norm))
         # self.get_logger().info(f"Heading error (degree): {0}, {yaw_degrees}, {heading_error:.2f}")
-
-    def target_gps_callback(self, msg):
-        self.target_lat = msg.x
-        self.target_lon = msg.y
-
         if (self.target_lat != -1) & (self.target_lon != -1) & (self.curr_lat != -1) & (self.curr_lon != -1):
             target_bearing = calculate_bearing(self.curr_lat, self.curr_lon, self.target_lat, self.target_lon)
             self.distance = calculate_distance(self.curr_lat, self.curr_lon, self.target_lat, self.target_lon)
@@ -175,7 +170,11 @@ class GuardianNavNode(Node):
         self.heading_error_pub.publish(Float32(data=self.heading_error))
         self.distance_pub.publish(Float32(data=self.distance))
 
-        # self.get_logger().info(f"Heading error: {self.target_lat} | {self.target_lon} | {self.curr_lat} | {self.curr_lon}")
+    def target_gps_callback(self, msg):
+        self.target_lat = msg.x
+        self.target_lon = msg.y
+
+        self.get_logger().info(f"GPS computing: {self.target_lat} | {self.target_lon} | {self.curr_lat} | {self.curr_lon}")
         # self.get_logger().info(f"Yaw {self.yaw_deg} | bearing {target_bearing} | heading err {self.heading_error}")
 
 def main(args=None):
