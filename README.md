@@ -21,6 +21,9 @@ ros2 run guardian_control guardian_nav_node
 `ros2 launch foxglove_bridge foxglove_bridge_launch.xml`
 # then visualize on https://app.foxglove.dev/genozen/devices
 
+## Current Bug
+-[ ] Must have new GPS points to trigger the IMU callback 
+
 
 # Test GPS Points (Delete this later!!)
 ```
