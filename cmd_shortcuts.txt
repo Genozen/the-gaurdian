@@ -23,6 +23,8 @@ yolo detect train data=dataset_fire_smoke_yolo11/data.yaml model=yolo11n.pt epoc
 # Fire Detection / Camera Node
 ros2 run guardian_control fire_detector 
 
+# REMEMBER I HAVE TO TRIGGER SEND WAYPOINT FOR HEADING AND DISTANCE TO COMPUTE
+
 bascketeball t1 stationed
 t2 go around fail
 t3 same (hiccupse halfcourt back, laptop disconnected)

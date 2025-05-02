@@ -120,12 +120,12 @@ class GuardianNavNode(Node):
         # lat6 = 42.034496
         # lon6 = -87.912789
 
-        self.curr_lat = 42.034495
-        self.curr_lon = -87.912657
+        # self.curr_lat = 42.034495
+        # self.curr_lon = -87.912657
 
         # ----------- Get actual GNSS data
-        # self.curr_lat = msg.latitude
-        # self.curr_lon = msg.longitude
+        self.curr_lat = msg.latitude
+        self.curr_lon = msg.longitude
 
         # self.get_logger().info(f"GPS: lat={msg.latitude:.6f}, lon={msg.longitude:.6f}")
 
