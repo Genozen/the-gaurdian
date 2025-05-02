@@ -54,14 +54,14 @@ class FireDetectorNode(Node):
                         
                         if conf >= 0.50:
                             cls_id = int(box.cls[0].item())
-                            label = self.model.names[cls_id] if hasattr(self.model, 'names') else str(cls_id)
+                            # label = self.model.names[cls_id] if hasattr(self.model, 'names') else str(cls_id)
 
                             # Draw rectangle
-                            cv2.rectangle(flipped, (xyxy[0], xyxy[1]), (xyxy[2], xyxy[3]), (0, 255, 0), 2)
+                            # cv2.rectangle(flipped, (xyxy[0], xyxy[1]), (xyxy[2], xyxy[3]), (0, 255, 0), 2)
                             # Draw label
-                            cv2.putText(flipped, f"{label} {conf:.2f}", (xyxy[0], xyxy[1] - 10),
-                                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-                            self.get_logger().info(f"Confidence: {conf:.2f}")
+                            # cv2.putText(flipped, f"{label} {conf:.2f}", (xyxy[0], xyxy[1] - 10),
+                                        # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                            # self.get_logger().info(f"Confidence: {conf:.2f}")
                             
                             self.isFire.data = True
                             self.isFire_pub.publish(self.isFire)
@@ -69,8 +69,8 @@ class FireDetectorNode(Node):
                             self.isFire.data = False
                             
 
-            cv2.imshow("Fire Detection", flipped)
-            cv2.waitKey(1)
+            # cv2.imshow("Fire Detection", flipped)
+            # cv2.waitKey(1)
 
 
             # cv2.imshow("Camera View", flipped)
