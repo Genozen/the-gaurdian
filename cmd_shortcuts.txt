@@ -15,7 +15,7 @@ ros2 launch foxglove_bridge foxglove_bridge_launch.xml
 # then visualize on https://app.foxglove.dev/genozen/devices
 
 # launching Oak-D 
-ros2 launch depthai_ros_driver camera.launch.py params_file:=/opt/ros/humble/share/depthai_ros_driver/config/oak_d_pro_w.yaml
+ros2 launch depthai_ros_driver camera.launch.py params_file:=oak-d-rgb_only.yaml 
 
 
 bascketeball t1 stationed

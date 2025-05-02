@@ -1,0 +1,53 @@
+[0.000000] (-) TimerEvent: {}
+[0.000405] (guardian_control) JobQueued: {'identifier': 'guardian_control', 'dependencies': OrderedDict()}
+[0.010538] (guardian_control) JobStarted: {'identifier': 'guardian_control'}
+[0.096657] (-) TimerEvent: {}
+[0.197284] (-) TimerEvent: {}
+[0.297978] (-) TimerEvent: {}
+[0.398780] (-) TimerEvent: {}
+[0.499595] (-) TimerEvent: {}
+[0.600497] (-) TimerEvent: {}
+[0.701400] (-) TimerEvent: {}
+[0.802230] (-) TimerEvent: {}
+[0.903134] (-) TimerEvent: {}
+[1.003784] (-) TimerEvent: {}
+[1.104449] (-) TimerEvent: {}
+[1.205117] (-) TimerEvent: {}
+[1.305817] (-) TimerEvent: {}
+[1.406594] (-) TimerEvent: {}
+[1.507372] (-) TimerEvent: {}
+[1.603967] (guardian_control) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/genozen/Documents/the_gaurdian/build/guardian_control/build', '--no-deps', 'symlink_data'], 'cwd': '/home/genozen/Documents/the_gaurdian/build/guardian_control', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'OPENBLAS_CORETYPE': 'ARMV8', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'genozen', 'XDG_SESSION_TYPE': 'x11', 'GIT_ASKPASS': '/usr/share/code-insiders/resources/app/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/local/cuda/lib64:/usr/local/cuda-12.6/targets/aarch64-linux/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/genozen', 'CHROME_DESKTOP': 'code-insiders.desktop', 'TERM_PROGRAM_VERSION': '1.100.0-insider', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/code-insiders.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'VSCODE_GIT_ASKPASS_MAIN': '/usr/share/code-insiders/resources/app/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/usr/share/code-insiders/code-insiders', 'MANAGERPID': '1410', 'SYSTEMD_EXEC_PID': '2146', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '3760', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/genozen/Documents/the_gaurdian/install', 'ROS_DISTRO': 'humble', 'GTK_IM_MODULE': 'ibus', 'LOGNAME': 'genozen', 'IGN_GAZEBO_MODEL_PATH': '/opt/ros/humble/share', 'JOURNAL_STREAM': '8:41214', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'genozen', 'TERM': 'xterm-256color', 'GAZEBO_MODEL_PATH': '/opt/ros/humble/share', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/usr/local/cuda/bin:/home/genozen/.local/bin:/opt/ros/humble/bin:/home/genozen/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/genozen-desktop:@/tmp/.ICE-unix/2122,unix/genozen-desktop:/tmp/.ICE-unix/2122', 'INVOCATION_ID': '1b1c6c22f5ba4b2bb841653b8835f4fa', 'XDG_MENU_PREFIX': 'gnome-', 'XDG_RUNTIME_DIR': '/run/user/1000', 'GDK_BACKEND': 'x11', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'Unity', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-c0c3d5d21f.sock', 'TERM_PROGRAM': 'vscode', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/genozen/Documents/the_gaurdian/install/guardian_control:/opt/ros/humble', 'ORIGINAL_XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'IGN_GAZEBO_RESOURCE_PATH': '/opt/ros/humble/share', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'GAZEBO_RESOURCE_PATH': '/opt/ros/humble/share', 'GJS_DEBUG_OUTPUT': 'stderr', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/genozen/Documents/the_gaurdian/build/guardian_control', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/genozen/Documents/the_gaurdian/build/guardian_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/genozen/Documents/the_gaurdian/install/guardian_control/lib/python3.10/site-packages:/home/genozen/Documents/the_gaurdian/build/guardian_control:/home/genozen/Documents/the_gaurdian/install/guardian_control/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[1.610114] (-) TimerEvent: {}
+[1.711517] (-) TimerEvent: {}
+[1.812176] (-) TimerEvent: {}
+[1.912808] (-) TimerEvent: {}
+[2.013478] (-) TimerEvent: {}
+[2.114256] (-) TimerEvent: {}
+[2.215107] (-) TimerEvent: {}
+[2.311032] (guardian_control) StdoutLine: {'line': b'running develop\n'}
+[2.315208] (-) TimerEvent: {}
+[2.415901] (-) TimerEvent: {}
+[2.516832] (-) TimerEvent: {}
+[2.617734] (-) TimerEvent: {}
+[2.718616] (-) TimerEvent: {}
+[2.804323] (guardian_control) StdoutLine: {'line': b'running egg_info\n'}
+[2.804963] (guardian_control) StdoutLine: {'line': b'writing guardian_control.egg-info/PKG-INFO\n'}
+[2.805348] (guardian_control) StdoutLine: {'line': b'writing dependency_links to guardian_control.egg-info/dependency_links.txt\n'}
+[2.805681] (guardian_control) StdoutLine: {'line': b'writing entry points to guardian_control.egg-info/entry_points.txt\n'}
+[2.806037] (guardian_control) StdoutLine: {'line': b'writing requirements to guardian_control.egg-info/requires.txt\n'}
+[2.806330] (guardian_control) StdoutLine: {'line': b'writing top-level names to guardian_control.egg-info/top_level.txt\n'}
+[2.810518] (guardian_control) StdoutLine: {'line': b"reading manifest file 'guardian_control.egg-info/SOURCES.txt'\n"}
+[2.812170] (guardian_control) StdoutLine: {'line': b"writing manifest file 'guardian_control.egg-info/SOURCES.txt'\n"}
+[2.815370] (guardian_control) StdoutLine: {'line': b'running build_ext\n'}
+[2.815831] (guardian_control) StdoutLine: {'line': b'Creating /home/genozen/Documents/the_gaurdian/install/guardian_control/lib/python3.10/site-packages/guardian-control.egg-link (link to .)\n'}
+[2.817923] (guardian_control) StdoutLine: {'line': b'Installing fire_detector script to /home/genozen/Documents/the_gaurdian/install/guardian_control/lib/guardian_control\n'}
+[2.818530] (guardian_control) StdoutLine: {'line': b'Installing guardian_nav_node script to /home/genozen/Documents/the_gaurdian/install/guardian_control/lib/guardian_control\n'}
+[2.820458] (-) TimerEvent: {}
+[2.820875] (guardian_control) StdoutLine: {'line': b'Installing joy_to_serial_node script to /home/genozen/Documents/the_gaurdian/install/guardian_control/lib/guardian_control\n'}
+[2.821932] (guardian_control) StdoutLine: {'line': b'\n'}
+[2.822247] (guardian_control) StdoutLine: {'line': b'Installed /home/genozen/Documents/the_gaurdian/build/guardian_control\n'}
+[2.822548] (guardian_control) StdoutLine: {'line': b'running symlink_data\n'}
+[2.911527] (guardian_control) CommandEnded: {'returncode': 0}
+[2.920648] (-) TimerEvent: {}
+[2.962483] (guardian_control) JobEnded: {'identifier': 'guardian_control', 'rc': 0}
+[2.965088] (-) EventReactorShutdown: {}

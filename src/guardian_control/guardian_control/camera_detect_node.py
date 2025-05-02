@@ -3,10 +3,13 @@ from rclpy.node import Node
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 import cv2
+import numpy
 
 import torch
 from ultralytics import YOLO
-from PIL import Image
+
+from ament_index_python.packages import get_package_share_directory
+import os
 
 class FireDetectorNode(Node):
     def __init__(self):
@@ -17,15 +20,48 @@ class FireDetectorNode(Node):
             self.image_callback,
             10)
         self.bridge = CvBridge()
+
+        model_path = os.path.join(
+        get_package_share_directory('guardian_control'),
+        'models',
+        'yolo11n.engine'
+        )
+
+        self.model = YOLO(model_path)
+
+
+        self.last_log = self.get_clock().now()   # tiny FPS logger
         self.get_logger().info("Fire Detector Node Started")
 
     def image_callback(self, msg):
         try:
             frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
-            # TODO: Add fire detection logic here
             flipped = cv2.flip(frame, 0)   # Flip vertically (upside down)
-            cv2.imshow("Camera View", flipped)
+            # TODO: Add fire detection logic here
+            results = self.model(flipped)
+            # self.get_logger().info(f"Detections: {results}")
+
+            for r in results:
+                if r.boxes is not None:
+                    for box in r.boxes:
+                        # Get box coordinates as integers
+                        xyxy = box.xyxy[0].cpu().numpy().astype(int)  # [x1, y1, x2, y2]
+                        conf = box.conf[0].item()
+                        cls_id = int(box.cls[0].item())
+                        label = self.model.names[cls_id] if hasattr(self.model, 'names') else str(cls_id)
+
+                        # Draw rectangle
+                        cv2.rectangle(flipped, (xyxy[0], xyxy[1]), (xyxy[2], xyxy[3]), (0, 255, 0), 2)
+                        # Draw label
+                        cv2.putText(flipped, f"{label} {conf:.2f}", (xyxy[0], xyxy[1] - 10),
+                                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+
+            cv2.imshow("Fire Detection", flipped)
             cv2.waitKey(1)
+
+
+            # cv2.imshow("Camera View", flipped)
+            # cv2.waitKey(1)
         except Exception as e:
             self.get_logger().error(f"Failed to process image: {e}")
 
