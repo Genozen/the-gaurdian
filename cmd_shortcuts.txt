@@ -17,6 +17,11 @@ ros2 launch foxglove_bridge foxglove_bridge_launch.xml
 # launching Oak-D 
 ros2 launch depthai_ros_driver camera.launch.py params_file:=oak-d-rgb_only.yaml 
 
+# YOLO training
+yolo detect train data=dataset_fire_smoke_yolo11/data.yaml model=yolo11n.pt epochs=5 batch=4 imgsz=640
+
+# Fire Detection / Camera Node
+ros2 run guardian_control fire_detector 
 
 bascketeball t1 stationed
 t2 go around fail

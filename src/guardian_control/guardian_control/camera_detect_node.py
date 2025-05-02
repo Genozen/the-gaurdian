@@ -1,6 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Image
+from std_msgs.msg import Bool
 from cv_bridge import CvBridge
 import cv2
 import numpy
@@ -24,21 +25,24 @@ class FireDetectorNode(Node):
         model_path = os.path.join(
         get_package_share_directory('guardian_control'),
         'models',
-        'yolo11n.engine'
+        'fire_epoch5_batch_4_imgsize_640.engine' # 'yolo11n.engine'
         )
 
         self.model = YOLO(model_path)
 
-
         self.last_log = self.get_clock().now()   # tiny FPS logger
         self.get_logger().info("Fire Detector Node Started")
+
+        self.isFire = Bool()
+        self.isFire.data = False
+        self.isFire_pub = self.create_publisher(Bool, '/guardian/isFire', 10)
 
     def image_callback(self, msg):
         try:
             frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
             flipped = cv2.flip(frame, 0)   # Flip vertically (upside down)
             # TODO: Add fire detection logic here
-            results = self.model(flipped)
+            results = self.model(flipped, verbose=False) # verbose=false silence the messages
             # self.get_logger().info(f"Detections: {results}")
 
             for r in results:
@@ -47,14 +51,23 @@ class FireDetectorNode(Node):
                         # Get box coordinates as integers
                         xyxy = box.xyxy[0].cpu().numpy().astype(int)  # [x1, y1, x2, y2]
                         conf = box.conf[0].item()
-                        cls_id = int(box.cls[0].item())
-                        label = self.model.names[cls_id] if hasattr(self.model, 'names') else str(cls_id)
+                        
+                        if conf >= 0.50:
+                            cls_id = int(box.cls[0].item())
+                            label = self.model.names[cls_id] if hasattr(self.model, 'names') else str(cls_id)
 
-                        # Draw rectangle
-                        cv2.rectangle(flipped, (xyxy[0], xyxy[1]), (xyxy[2], xyxy[3]), (0, 255, 0), 2)
-                        # Draw label
-                        cv2.putText(flipped, f"{label} {conf:.2f}", (xyxy[0], xyxy[1] - 10),
-                                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                            # Draw rectangle
+                            cv2.rectangle(flipped, (xyxy[0], xyxy[1]), (xyxy[2], xyxy[3]), (0, 255, 0), 2)
+                            # Draw label
+                            cv2.putText(flipped, f"{label} {conf:.2f}", (xyxy[0], xyxy[1] - 10),
+                                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                            self.get_logger().info(f"Confidence: {conf:.2f}")
+                            
+                            self.isFire.data = True
+                            self.isFire_pub.publish(self.isFire)
+                        else:
+                            self.isFire.data = False
+                            
 
             cv2.imshow("Fire Detection", flipped)
             cv2.waitKey(1)

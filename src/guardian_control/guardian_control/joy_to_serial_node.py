@@ -3,7 +3,7 @@ from rclpy.node import Node
 from sensor_msgs.msg import Joy
 import serial #from pyserial
 from geometry_msgs.msg import Point
-from std_msgs.msg import Float32
+from std_msgs.msg import Float32, Bool
 import json
 
 class JoyPrinter(Node):
@@ -52,6 +52,13 @@ class JoyPrinter(Node):
             10                   # queue size
         )
 
+        self.isFire_sub = self.create_subscription(
+            Bool, 
+            'guardian/isFire',
+            self.fire_detect_callback,   # callback function
+            10                   # queue size
+        )
+
         # lat1 = 42.034495
         # lon1 = -87.912657
         # lat2 = 42.034752
@@ -79,6 +86,8 @@ class JoyPrinter(Node):
         self.serial_buffer = ""
         self.read_timer = self.create_timer(1, self.read_serial)
 
+        self.isFire = False
+
 
     def send_heartbeat(self):
         if self.ser and self.ser.is_open:
@@ -97,6 +106,8 @@ class JoyPrinter(Node):
             return  # Skip sending command until we have data
             
         command = 's' # temperary initialize here....
+
+        # Button A for Autonomous Mode
         if self.autonomous_mode == True:
             DISTANCE_TRESH = 10 # 10 meters to the target
             DEG_TRESH = 10
@@ -112,6 +123,10 @@ class JoyPrinter(Node):
                         command = 'f'
                 else: # goal reached
                     command = 's'
+
+            if self.isFire:
+                command = 'w' # trigger water pump
+                self.isFire = False
 
         else:
             left_stick_x = self.latest_joy_msg.axes[6] # left, right
@@ -173,6 +188,11 @@ class JoyPrinter(Node):
     def distance_callback(self, msg):
         self.distance = msg.data
         # self.get_logger().info(f"distance : {self.distance}")
+
+    def fire_detect_callback(self, msg):
+        self.isFire = msg.data
+        if self.isFire == True:
+            self.get_logger().info(f"fire is detected!!")
 
     def read_serial(self):
         if self.ser and self.ser.in_waiting > 0:

@@ -11,6 +11,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/models', ['guardian_control/models/yolo11n.engine']),
+        ('share/' + package_name + '/models', ['guardian_control/models/fire_epoch5_batch_4_imgsize_640.engine']),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
