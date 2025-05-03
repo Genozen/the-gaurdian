@@ -51,11 +51,11 @@ then visualize on https://app.foxglove.dev/genozen/devices
 https://console.particle.io/
 
 -------------------------------------Dev -----------------------
-## Current Bug
+### Current Bug
 -[ ] Must have new GPS points to trigger the IMU callback 
 
 
-# Test GPS Points (Delete this later!!)
+### Test GPS Points (Delete this later!!)
 ```
 42.034752,-87.912656   (pt 1)
 42.034752,-87.912473   (pt 2)
