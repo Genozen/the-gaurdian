@@ -44,7 +44,9 @@ ros2 run guardian_control fire_detector
 *!
 
 ## foxglove launch
-`ros2 launch foxglove_bridge foxglove_bridge_launch.xml`
+```
+ros2 launch foxglove_bridge foxglove_bridge_launch.xml
+```
 then visualize on https://app.foxglove.dev/genozen/devices
 
 ## Particle Console Login Page
