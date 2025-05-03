@@ -61,10 +61,10 @@ class FireDetectorNode(Node):
                             # Draw label
                             # cv2.putText(flipped, f"{label} {conf:.2f}", (xyxy[0], xyxy[1] - 10),
                                         # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-                            # self.get_logger().info(f"Confidence: {conf:.2f}")
                             
                             self.isFire.data = True
                             self.isFire_pub.publish(self.isFire)
+                            self.get_logger().info(f"Confidence: {conf:.2f}")
                         else:
                             self.isFire.data = False
                             

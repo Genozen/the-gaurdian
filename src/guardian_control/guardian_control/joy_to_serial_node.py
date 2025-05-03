@@ -108,19 +108,22 @@ class JoyPrinter(Node):
         command = 's' # temperary initialize here....
 
         # Button A for Autonomous Mode
+        # if True: # testing purposes !!!!
         if self.autonomous_mode == True:
-            DISTANCE_TRESH = 10 # 10 meters to the target
+            DISTANCE_TRESH = 3 # 10 meters to the target
             DEG_TRESH = 10
+            HEADING_OFFSET = -22
 
             if (self.distance != -999) & (self.heading_error != -999):
                 # start autonomous if curr distance is further from target
                 if self.distance > DISTANCE_TRESH:
-                    if self.heading_error > DEG_TRESH: # Robot is CCW, need to rotate CW
-                        command = 'r'
-                    elif self.heading_error < -DEG_TRESH: # Robot is CW, need to rotate CCW
+                    if self.heading_error > DEG_TRESH: # Too positive (robot CW too much), turn left
                         command = 'l'
+                    elif self.heading_error < -DEG_TRESH: # Too negative (robot CCW too much), turn right
+                        command = 'r'
                     else:
                         command = 'f'
+                    self.get_logger().info(f"Sent command: {command}, heading error {self.heading_error:0.2f}, distance {self.distance:0.2f}")
                 else: # goal reached
                     command = 's'
 
@@ -153,7 +156,7 @@ class JoyPrinter(Node):
 
         if self.ser and self.ser.is_open:
             self.ser.write((command + '\n').encode('utf-8'))
-            self.get_logger().info(f"Sent command: {command}, heading error {self.heading_error:0.2f}, distance {self.distance:0.2f}")
+            # self.get_logger().info(f"Sent command: {command}, heading error {self.heading_error:0.2f}, distance {self.distance:0.2f}")
         else:
             self.get_logger().warn("Serial not open.")
 

@@ -59,10 +59,13 @@ def calculate_distance(curr_lat, curr_lon, target_lat, target_lon):
 
     return distance
     
+def imu_to_compass_heading(yaw_deg):
+    return normalize_angle_360(-yaw_deg)
 
 def compute_heading_error(target_deg, curr_deg):
-    deg_error = curr_deg - target_deg
-    return deg_error
+    # deg_error = curr_deg - target_deg
+    return (curr_deg - target_deg + 540) % 360 - 180 # Returns signed shortest angle from current to target [-180, 180)
+    # return deg_error
 
 class GuardianNavNode(Node):
     def __init__(self):
@@ -106,28 +109,58 @@ class GuardianNavNode(Node):
         self.heading_error_pub = self.create_publisher(Float32, 'guardian/heading_error', 10)
         self.distance_pub = self.create_publisher(Float32, 'guardian/distance', 10)
 
+        self.target_waypoint_test = Point()
+        self.test_target_waypoint_pub = self.create_publisher(Point, '/guardian/target_gps', 10)
+
     def gps_callback(self, msg):
-        # lat1 = 42.034495
-        # lon1 = -87.912657
-        # lat2 = 42.034752
-        # lon2 = -87.912656
-        # lat3 = 42.034752
-        # lon3 = -87.912473
-        # lat4 = 42.034494
-        # lon4 = -87.912473
-        # lat5 = 42.034751
-        # lon5 = -87.912800
-        # lat6 = 42.034496
-        # lon6 = -87.912789
-
-        # self.curr_lat = 42.034495
-        # self.curr_lon = -87.912657
-
         # ----------- Get actual GNSS data
         self.curr_lat = msg.latitude
         self.curr_lon = msg.longitude
 
         # self.get_logger().info(f"GPS: lat={msg.latitude:.6f}, lon={msg.longitude:.6f}")
+
+        # ----------- Test code
+                # lat1 = 42.034495
+        # lon1 = -87.912657
+
+        # bascketball top (~0 deg)
+        # lat = 42.034752
+        # lon = -87.912656
+
+        # bascketball top-right (~28 deg)
+        # lat = 42.034752
+        # lon = -87.912473
+
+        # bascketball right (~90 deg)
+        # lat = 42.034494
+        # lon = -87.912473
+
+        # bascketball top-left (~ -22 deg)
+        # lat = 42.034751
+        # lon = -87.912800
+
+        # bascketball left (~ -90 deg)
+        # lat = 42.034496
+        # lon = -87.912789
+
+        # backetball bottom-left (~ -136 deg) 
+        # lat = 42.034393
+        # lon = -87.912789
+
+        #bascketball bottom (~ +180 deg)
+        # lat = 42.034379
+        # lon = -87.912652
+
+        #bascketball bottom-right (~ 133 deg)
+        # lat = 42.034377
+        # lon = -87.912490
+
+        # self.curr_lat = 42.034495
+        # self.curr_lon = -87.912657
+
+        # self.target_waypoint_test.x = lat
+        # self.target_waypoint_test.y = lon
+        # self.test_target_waypoint_pub.publish(self.target_waypoint_test)
 
 
         # bearing_deg1 = calculate_bearing(lat1, lon1, lat2, lon2)
@@ -155,7 +188,7 @@ class GuardianNavNode(Node):
 
         roll, pitch, yaw = euler_from_quaternion(quaternion)
         yaw_degrees = math.degrees(yaw)
-        self.yaw_deg = yaw_degrees
+        self.yaw_deg = imu_to_compass_heading(yaw_degrees)
 
         # heading_error = compute_heading_error(0, yaw_degrees)
 
@@ -166,15 +199,18 @@ class GuardianNavNode(Node):
             self.distance = calculate_distance(self.curr_lat, self.curr_lon, self.target_lat, self.target_lon)
             if self.yaw_deg != -999:
                 self.heading_error = compute_heading_error(target_bearing, self.yaw_deg)
+                self.get_logger().info(f"Yaw:{self.yaw_deg:.2f}, Azim:{target_bearing:.2f}, Err:{self.heading_error:.2f}")
         
         self.heading_error_pub.publish(Float32(data=self.heading_error))
         self.distance_pub.publish(Float32(data=self.distance))
+        # self.get_logger().info(f"GPS computing: {self.target_lat} | {self.target_lon} | {self.curr_lat} | {self.curr_lon}")
+
 
     def target_gps_callback(self, msg):
         self.target_lat = msg.x
         self.target_lon = msg.y
 
-        self.get_logger().info(f"GPS computing: {self.target_lat} | {self.target_lon} | {self.curr_lat} | {self.curr_lon}")
+        # self.get_logger().info(f"GPS computing: {self.target_lat} | {self.target_lon} | {self.curr_lat} | {self.curr_lon}")
         # self.get_logger().info(f"Yaw {self.yaw_deg} | bearing {target_bearing} | heading err {self.heading_error}")
 
 def main(args=None):
