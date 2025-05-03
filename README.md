@@ -1,5 +1,5 @@
 # The Gaurdian Project
-\A robotics project to help combat wildfires
+A robotics project to help combat wildfires
 
 ## Quick Full Launch Order:
 ```
