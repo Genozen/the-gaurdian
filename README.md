@@ -19,7 +19,9 @@ ros2 run guardian_control fire_detector
 
 
 ## Setting up Jetson as Hotspot
-`nmcli device wifi hotspot ifname wlP1p1s0 ssid JetsonNet password guardian123`
+```
+nmcli device wifi hotspot ifname wlP1p1s0 ssid JetsonNet password guardian123
+```
 
 ## microROS
 ```
