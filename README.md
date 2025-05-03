@@ -1,5 +1,6 @@
 # The Gaurdian Project
 A robotics project to help combat wildfires
+![The Guardian](theguardian.png)
 
 ## Quick Full Launch Order:
 ```
