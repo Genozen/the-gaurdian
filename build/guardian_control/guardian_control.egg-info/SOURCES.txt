@@ -14,5 +14,6 @@ guardian_control.egg-info/requires.txt
 guardian_control.egg-info/top_level.txt
 guardian_control.egg-info/zip-safe
 guardian_control/models/fire_epoch5_batch_4_imgsize_640.engine
+guardian_control/models/fire_epoch_50_batch_6.engine
 guardian_control/models/yolo11n.engine
 resource/guardian_control

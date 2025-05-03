@@ -25,7 +25,7 @@ class FireDetectorNode(Node):
         model_path = os.path.join(
         get_package_share_directory('guardian_control'),
         'models',
-        'fire_epoch5_batch_4_imgsize_640.engine' # 'yolo11n.engine'
+        'fire_epoch_50_batch_6.engine' #'fire_epoch5_batch_4_imgsize_640.engine' # 'yolo11n.engine'
         )
 
         self.model = YOLO(model_path)
@@ -54,13 +54,13 @@ class FireDetectorNode(Node):
                         
                         if conf >= 0.50:
                             cls_id = int(box.cls[0].item())
-                            # label = self.model.names[cls_id] if hasattr(self.model, 'names') else str(cls_id)
+                            label = self.model.names[cls_id] if hasattr(self.model, 'names') else str(cls_id)
 
-                            # Draw rectangle
-                            # cv2.rectangle(flipped, (xyxy[0], xyxy[1]), (xyxy[2], xyxy[3]), (0, 255, 0), 2)
-                            # Draw label
-                            # cv2.putText(flipped, f"{label} {conf:.2f}", (xyxy[0], xyxy[1] - 10),
-                                        # cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                            ## Draw rectangle
+                            cv2.rectangle(flipped, (xyxy[0], xyxy[1]), (xyxy[2], xyxy[3]), (0, 255, 0), 2)
+                            ## Draw label
+                            cv2.putText(flipped, f"{label} {conf:.2f}", (xyxy[0], xyxy[1] - 10),
+                                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
                             
                             self.isFire.data = True
                             self.isFire_pub.publish(self.isFire)
@@ -69,12 +69,9 @@ class FireDetectorNode(Node):
                             self.isFire.data = False
                             
 
-            # cv2.imshow("Fire Detection", flipped)
-            # cv2.waitKey(1)
+            cv2.imshow("Fire Detection", flipped)
+            cv2.waitKey(1)
 
-
-            # cv2.imshow("Camera View", flipped)
-            # cv2.waitKey(1)
         except Exception as e:
             self.get_logger().error(f"Failed to process image: {e}")
 
