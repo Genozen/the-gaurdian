@@ -119,62 +119,6 @@ class GuardianNavNode(Node):
 
         # self.get_logger().info(f"GPS: lat={msg.latitude:.6f}, lon={msg.longitude:.6f}")
 
-        # ----------- Test code
-                # lat1 = 42.034495
-        # lon1 = -87.912657
-
-        # bascketball top (~0 deg)
-        # lat = 42.034752
-        # lon = -87.912656
-
-        # bascketball top-right (~28 deg)
-        # lat = 42.034752
-        # lon = -87.912473
-
-        # bascketball right (~90 deg)
-        # lat = 42.034494
-        # lon = -87.912473
-
-        # bascketball top-left (~ -22 deg)
-        # lat = 42.034751
-        # lon = -87.912800
-
-        # bascketball left (~ -90 deg)
-        # lat = 42.034496
-        # lon = -87.912789
-
-        # backetball bottom-left (~ -136 deg) 
-        # lat = 42.034393
-        # lon = -87.912789
-
-        #bascketball bottom (~ +180 deg)
-        # lat = 42.034379
-        # lon = -87.912652
-
-        #bascketball bottom-right (~ 133 deg)
-        # lat = 42.034377
-        # lon = -87.912490
-
-        # self.curr_lat = 42.034495
-        # self.curr_lon = -87.912657
-
-        # self.target_waypoint_test.x = lat
-        # self.target_waypoint_test.y = lon
-        # self.test_target_waypoint_pub.publish(self.target_waypoint_test)
-
-
-        # bearing_deg1 = calculate_bearing(lat1, lon1, lat2, lon2)
-        # bearing_deg2 = calculate_bearing(lat1, lon1, lat5, lon5)
-        # bearing_deg3 = calculate_bearing(lat1, lon1, lat6, lon6)
-        # self.get_logger().info(f"Bearing (degree): {bearing_deg1:.2f} {bearing_deg2:.2f} {bearing_deg3:.2f}")
-
-        # heading_error1 = compute_heading_error(0, bearing_deg1)
-        # heading_error2 = compute_heading_error(0, bearing_deg2)
-        # heading_error3 = compute_heading_error(0, bearing_deg3)
-        # self.get_logger().info(f"Heading err (degree): {heading_error1:.2f} {heading_error2:.2f} {heading_error3:.2f}")
-
-        # print(bearing_deg1, bearing_deg2, bearing_deg3)
-
 
     def imu_callback(self, msg):
         # self.get_logger().info(f"IMU: orientation_z = {msg.orientation.z:.6f}")

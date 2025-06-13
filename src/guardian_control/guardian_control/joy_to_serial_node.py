@@ -59,23 +59,10 @@ class JoyPrinter(Node):
             10                   # queue size
         )
 
-        # lat1 = 42.034495
-        # lon1 = -87.912657
-        # lat2 = 42.034752
-        # lon2 = -87.912656
-        # lat3 = 42.034752
-        # lon3 = -87.912473
-        # lat4 = 42.034494
-        # lon4 = -87.912473
-        # lat5 = 42.034751
-        # lon5 = -87.912800
-        # lat6 = 42.034496
-        # lon6 = -87.912789
-
         # testing fake waypoint
         self.target_waypoint = Point()
-        self.target_waypoint.x = 0.0 #42.034752 # Lattitude
-        self.target_waypoint.y = 0.0 #-87.912656 #Longitude
+        self.target_waypoint.x = 0.0 # Lattitude
+        self.target_waypoint.y = 0.0 #Longitude
         self.target_waypoint.z = 0.0 #unused
         self.heading_error = -999
         self.distance = -999
