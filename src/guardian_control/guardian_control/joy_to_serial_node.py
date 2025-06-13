@@ -107,19 +107,23 @@ class JoyPrinter(Node):
             
         command = 's' # temperary initialize here....
 
+
+        # self.get_logger().info(f"Sent command: {command}, heading error {self.heading_error:0.2f}, distance {self.distance:0.2f}")
+
         # Button A for Autonomous Mode
         # if True: # testing purposes !!!!
         if self.autonomous_mode == True:
             DISTANCE_TRESH = 3 # 10 meters to the target
             DEG_TRESH = 10
-            HEADING_OFFSET = -22
+            HEADING_OFFSET = 0 #-29.92
+            
 
             if (self.distance != -999) & (self.heading_error != -999):
                 # start autonomous if curr distance is further from target
                 if self.distance > DISTANCE_TRESH:
-                    if self.heading_error > DEG_TRESH: # Too positive (robot CW too much), turn left
+                    if self.heading_error + HEADING_OFFSET > DEG_TRESH: # Too positive (robot CW too much), turn left
                         command = 'l'
-                    elif self.heading_error < -DEG_TRESH: # Too negative (robot CCW too much), turn right
+                    elif self.heading_error + HEADING_OFFSET < -DEG_TRESH: # Too negative (robot CCW too much), turn right
                         command = 'r'
                     else:
                         command = 'f'
