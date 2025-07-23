@@ -1,0 +1,21 @@
+/oak:
+  ros__parameters:
+    camera:
+      i_enable_imu: false #true
+      i_enable_ir: false
+      i_nn_type: none #none, spatial
+      i_pipeline_type: RGB #Stereo #RGBD , Setting to Stereo gets raw fast image
+      
+    #rgb:
+      #i_resolution: '720'
+    #stereo:
+      #i_align_depth: true
+      #i_subpixel: true
+      #i_publish_right_rect: true
+      #i_publish_left_rect: true
+      #i_resolution: '480'
+      
+    # left:
+    #   i_fps: 90.0
+    # right:
+    #   i_fps: 90.0

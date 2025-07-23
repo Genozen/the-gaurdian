@@ -2,6 +2,9 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Joy
 import serial #from pyserial
+from geometry_msgs.msg import Point
+from std_msgs.msg import Float32, Bool
+import json
 
 class JoyPrinter(Node):
     def __init__(self):
@@ -17,8 +20,7 @@ class JoyPrinter(Node):
             self.ser = None
 
         # Characters to cycle through for testing
-        self.commands = ['f', 'b', 'l', 'r']
-        self.current_index = 0
+        # self.commands = ['f', 'b', 'l', 'r']
 
         # Heartbeat timer
         self.heartbeat_timer = self.create_timer(1.0, self.send_heartbeat)
@@ -37,6 +39,43 @@ class JoyPrinter(Node):
         )
         self.get_logger().info("Listening to /joy...")
 
+        self.heading_error_sub = self.create_subscription(
+            Float32, 
+            'guardian/heading_error',
+            self.heading_error_callback,   # callback function
+            10                   # queue size
+        )
+        self.distance_sub = self.create_subscription(
+            Float32, 
+            'guardian/distance',
+            self.distance_callback,   # callback function
+            10                   # queue size
+        )
+
+        self.isFire_sub = self.create_subscription(
+            Bool, 
+            'guardian/isFire',
+            self.fire_detect_callback,   # callback function
+            10                   # queue size
+        )
+
+        # testing fake waypoint
+        self.target_waypoint = Point()
+        self.target_waypoint.x = 0.0 # Lattitude
+        self.target_waypoint.y = 0.0 #Longitude
+        self.target_waypoint.z = 0.0 #unused
+        self.heading_error = -999
+        self.distance = -999
+        self.target_waypoint_pub = self.create_publisher(Point, '/guardian/target_gps', 10)
+
+        # flag for autonomous mode
+        self.autonomous_mode = False
+        self.serial_buffer = ""
+        self.read_timer = self.create_timer(1, self.read_serial)
+
+        self.isFire = False
+
+
     def send_heartbeat(self):
         if self.ser and self.ser.is_open:
             try:
@@ -53,37 +92,66 @@ class JoyPrinter(Node):
             self.get_logger().warn("No joystick input received yet.")
             return  # Skip sending command until we have data
             
-        left_stick_x = self.latest_joy_msg.axes[6] # left, right
-        left_stick_y = self.latest_joy_msg.axes[7] # forward, backward
+        command = 's' # temperary initialize here....
+
+
+        # self.get_logger().info(f"Sent command: {command}, heading error {self.heading_error:0.2f}, distance {self.distance:0.2f}")
+
+        # Button A for Autonomous Mode
+        # if True: # testing purposes !!!!
+        if self.autonomous_mode == True:
+            DISTANCE_TRESH = 3 # 10 meters to the target
+            DEG_TRESH = 10
+            HEADING_OFFSET = 0 #-29.92
+            
+
+            if (self.distance != -999) & (self.heading_error != -999):
+                # start autonomous if curr distance is further from target
+                if self.distance > DISTANCE_TRESH:
+                    if self.heading_error + HEADING_OFFSET > DEG_TRESH: # Too positive (robot CW too much), turn left
+                        command = 'l'
+                    elif self.heading_error + HEADING_OFFSET < -DEG_TRESH: # Too negative (robot CCW too much), turn right
+                        command = 'r'
+                    else:
+                        command = 'f'
+                    self.get_logger().info(f"Sent command: {command}, heading error {self.heading_error:0.2f}, distance {self.distance:0.2f}")
+                else: # goal reached
+                    command = 's'
+
+            if self.isFire:
+                command = 'w' # trigger water pump
+                self.isFire = False
+
+        else:
+            left_stick_x = self.latest_joy_msg.axes[6] # left, right
+            left_stick_y = self.latest_joy_msg.axes[7] # forward, backward
+
+            if left_stick_y == 1:
+                command = 'f'
+            elif left_stick_y == -1:
+                command = 'b'
+            elif left_stick_x == 1:
+                command = 'l'
+            elif left_stick_x == -1:
+                command = 'r'
+            else:
+                command = 's'
+
+        # ----- Digging and Water Pump ------
         LB_button = self.latest_joy_msg.buttons[4] # LB, for digging
         RB_button = self.latest_joy_msg.buttons[5] # RB, for water
-
-        if left_stick_y == 1:
-            command = 'f'
-        elif left_stick_y == -1:
-            command = 'b'
-        elif left_stick_x == 1:
-            command = 'l'
-        elif left_stick_x == -1:
-            command = 'r'
-        else:
-            command = 's'
-        print(command)
-
-        # Turn digging motor on
         if LB_button == 1:
             command = 'd'
-
         if RB_button == 1:
             command = 'w'
 
         if self.ser and self.ser.is_open:
-            # command = self.commands[self.current_index]
             self.ser.write((command + '\n').encode('utf-8'))
-            self.get_logger().info(f"Sent command: {command}")
-            self.current_index = (self.current_index + 1) % len(self.commands)
+            # self.get_logger().info(f"Sent command: {command}, heading error {self.heading_error:0.2f}, distance {self.distance:0.2f}")
         else:
             self.get_logger().warn("Serial not open.")
+
+
         # pass
 
     def joy_callback(self, msg):        
@@ -95,11 +163,61 @@ class JoyPrinter(Node):
         LB_button = msg.buttons[4]
         RB_button = msg.buttons[5]
 
+        button_a = msg.buttons[0] # hold button A to trigger autonomous mode
+        if button_a == 1:
+            self.autonomous_mode = True
+        else:
+            self.autonomous_mode = False 
+        # self.get_logger().info(f"Published target GPS: lat={self.target_waypoint.x}, lon={self.target_waypoint.y}")
         # self.get_logger().info(
         #     f"LX: {left_stick_x:.2f}, LY: {left_stick_y:.2f}"
         # )
 
         # pass
+
+    def heading_error_callback(self, msg):
+        self.heading_error = msg.data
+        # self.get_logger().info(f"heading error: {self.heading_error}")
+
+    def distance_callback(self, msg):
+        self.distance = msg.data
+        # self.get_logger().info(f"distance : {self.distance}")
+
+    def fire_detect_callback(self, msg):
+        self.isFire = msg.data
+        if self.isFire == True:
+            self.get_logger().info(f"fire is detected!!")
+
+    def read_serial(self):
+        if self.ser and self.ser.in_waiting > 0:
+            try:
+                incoming = self.ser.read(self.ser.in_waiting).decode('utf-8', errors='ignore')
+                self.serial_buffer += incoming
+
+                while '^' in self.serial_buffer and '$' in self.serial_buffer:
+                    start = self.serial_buffer.find('^') + 1
+                    end = self.serial_buffer.find('$')
+                    if end == -1:
+                        break
+                    
+                    json_str = self.serial_buffer[start:end]
+                    self.serial_buffer = self.serial_buffer[end + 1:]
+
+                    try:
+                        data = json.loads(json_str)
+                        lat = data.get('lat')
+                        lon = data.get('lon')
+                        self.get_logger().info(f"Received Waypoint from Boron: {lat}, {lon}")
+
+                        # if lat != self.target_waypoint.x or lon != self.target_waypoint.y:
+                        self.target_waypoint.x = lat
+                        self.target_waypoint.y = lon
+                        self.target_waypoint_pub.publish(self.target_waypoint)
+                    except json.JSONDecodeError as e:
+                        self.get_logger().warn(f"Failsed to parse JSON {e}")
+            except serial.SerialException as e:
+                self.get_logger().error(f"Serial read error {e}")
+
 
 def main(args=None):
     rclpy.init(args=args)

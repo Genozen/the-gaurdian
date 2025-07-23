@@ -10,6 +10,9 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/models', ['guardian_control/models/yolo11n.engine']),
+        ('share/' + package_name + '/models', ['guardian_control/models/fire_epoch5_batch_4_imgsize_640.engine']),
+        ('share/' + package_name + '/models', ['guardian_control/models/fire_epoch_50_batch_6.engine']),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -21,6 +24,8 @@ setup(
     entry_points={
         'console_scripts': [
             'joy_to_serial_node = guardian_control.joy_to_serial_node:main',
+            'guardian_nav_node = guardian_control.guardian_nav_node:main',
+            'fire_detector = guardian_control.camera_detect_node:main',
         ],
     },
 )

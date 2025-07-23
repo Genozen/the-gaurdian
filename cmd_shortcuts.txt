@@ -1,10 +1,29 @@
 
 # Setting up Jetson as Hotspot
-nmcli device wifi hotspot ifname wlP1p1s0 ssid JetsonNet password gaurdian123
+nmcli device wifi hotspot ifname wlP1p1s0 ssid JetsonNet password guardian123
 
 # microROS
 sudo docker run -it --rm -v /dev:/dev -v /dev/shm:/dev/shm --privileged --net=host microros/micro-ros-agent:$ROS_DISTRO serial --dev /dev/ttyACM1 -v6
+sudo docker run -it --rm -v /dev:/dev -v /dev/shm:/dev/shm --privileged --net=host microros/micro-ros-agent:$ROS_DISTRO serial --dev /dev/ttyACM0 -v4
 
+# main Guardian scipts
+ros2 run guardian_control joy_to_serial_node
+ros2 run guardian_control guardian_nav_node 
+
+# foxglove launch
+ros2 launch foxglove_bridge foxglove_bridge_launch.xml
+# then visualize on https://app.foxglove.dev/genozen/devices
+
+# launching Oak-D 
+ros2 launch depthai_ros_driver camera.launch.py params_file:=oak-d-rgb_only.yaml 
+
+# YOLO training
+yolo detect train data=dataset_fire_smoke_yolo11/data.yaml model=yolo11n.pt epochs=5 batch=4 imgsz=640
+
+# Fire Detection / Camera Node
+ros2 run guardian_control fire_detector 
+
+# REMEMBER I HAVE TO TRIGGER SEND WAYPOINT FOR HEADING AND DISTANCE TO COMPUTE
 
 bascketeball t1 stationed
 t2 go around fail

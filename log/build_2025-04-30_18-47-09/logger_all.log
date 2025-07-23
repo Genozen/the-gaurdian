@@ -1,0 +1,229 @@
+[0.303s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[0.303s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=6, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0xffff833c1750>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffff833c1150>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffff833c1150>>, mixin_verb=('build',))
+[0.810s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.811s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.811s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.811s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.811s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.811s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.811s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/genozen/Documents/the_gaurdian'
+[0.812s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.812s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.812s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.812s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.812s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.813s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.813s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.813s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.813s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.838s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.838s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.838s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.838s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.838s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.839s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t1_steady) by extensions ['ignore', 'ignore_ament_install']
+[0.839s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t1_steady) by extension 'ignore'
+[0.839s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t1_steady) by extension 'ignore_ament_install'
+[0.839s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t1_steady) by extensions ['colcon_pkg']
+[0.839s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t1_steady) by extension 'colcon_pkg'
+[0.840s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t1_steady) by extensions ['colcon_meta']
+[0.840s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t1_steady) by extension 'colcon_meta'
+[0.840s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t1_steady) by extensions ['ros']
+[0.840s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t1_steady) by extension 'ros'
+[0.840s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t1_steady) by extensions ['cmake', 'python']
+[0.840s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t1_steady) by extension 'cmake'
+[0.840s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t1_steady) by extension 'python'
+[0.840s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t1_steady) by extensions ['python_setup_py']
+[0.840s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t1_steady) by extension 'python_setup_py'
+[0.841s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t2) by extensions ['ignore', 'ignore_ament_install']
+[0.841s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t2) by extension 'ignore'
+[0.841s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t2) by extension 'ignore_ament_install'
+[0.841s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t2) by extensions ['colcon_pkg']
+[0.841s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t2) by extension 'colcon_pkg'
+[0.841s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t2) by extensions ['colcon_meta']
+[0.841s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t2) by extension 'colcon_meta'
+[0.842s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t2) by extensions ['ros']
+[0.842s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t2) by extension 'ros'
+[0.842s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t2) by extensions ['cmake', 'python']
+[0.842s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t2) by extension 'cmake'
+[0.842s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t2) by extension 'python'
+[0.842s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t2) by extensions ['python_setup_py']
+[0.842s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t2) by extension 'python_setup_py'
+[0.842s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t3) by extensions ['ignore', 'ignore_ament_install']
+[0.843s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t3) by extension 'ignore'
+[0.843s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t3) by extension 'ignore_ament_install'
+[0.843s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t3) by extensions ['colcon_pkg']
+[0.843s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t3) by extension 'colcon_pkg'
+[0.843s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t3) by extensions ['colcon_meta']
+[0.843s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t3) by extension 'colcon_meta'
+[0.843s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t3) by extensions ['ros']
+[0.843s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t3) by extension 'ros'
+[0.844s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t3) by extensions ['cmake', 'python']
+[0.844s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t3) by extension 'cmake'
+[0.844s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t3) by extension 'python'
+[0.844s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t3) by extensions ['python_setup_py']
+[0.844s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t3) by extension 'python_setup_py'
+[0.844s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t4) by extensions ['ignore', 'ignore_ament_install']
+[0.844s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t4) by extension 'ignore'
+[0.845s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t4) by extension 'ignore_ament_install'
+[0.845s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t4) by extensions ['colcon_pkg']
+[0.845s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t4) by extension 'colcon_pkg'
+[0.845s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t4) by extensions ['colcon_meta']
+[0.845s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t4) by extension 'colcon_meta'
+[0.845s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t4) by extensions ['ros']
+[0.845s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t4) by extension 'ros'
+[0.845s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t4) by extensions ['cmake', 'python']
+[0.845s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t4) by extension 'cmake'
+[0.845s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t4) by extension 'python'
+[0.846s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t4) by extensions ['python_setup_py']
+[0.846s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t4) by extension 'python_setup_py'
+[0.846s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t5) by extensions ['ignore', 'ignore_ament_install']
+[0.846s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t5) by extension 'ignore'
+[0.846s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t5) by extension 'ignore_ament_install'
+[0.846s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t5) by extensions ['colcon_pkg']
+[0.846s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t5) by extension 'colcon_pkg'
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t5) by extensions ['colcon_meta']
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t5) by extension 'colcon_meta'
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t5) by extensions ['ros']
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t5) by extension 'ros'
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t5) by extensions ['cmake', 'python']
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t5) by extension 'cmake'
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t5) by extension 'python'
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t5) by extensions ['python_setup_py']
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t5) by extension 'python_setup_py'
+[0.848s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t6) by extensions ['ignore', 'ignore_ament_install']
+[0.848s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t6) by extension 'ignore'
+[0.848s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t6) by extension 'ignore_ament_install'
+[0.848s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t6) by extensions ['colcon_pkg']
+[0.848s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t6) by extension 'colcon_pkg'
+[0.848s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t6) by extensions ['colcon_meta']
+[0.848s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t6) by extension 'colcon_meta'
+[0.848s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t6) by extensions ['ros']
+[0.848s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t6) by extension 'ros'
+[0.849s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t6) by extensions ['cmake', 'python']
+[0.849s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t6) by extension 'cmake'
+[0.849s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t6) by extension 'python'
+[0.849s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t6) by extensions ['python_setup_py']
+[0.849s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t6) by extension 'python_setup_py'
+[0.849s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t7) by extensions ['ignore', 'ignore_ament_install']
+[0.849s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t7) by extension 'ignore'
+[0.849s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t7) by extension 'ignore_ament_install'
+[0.850s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t7) by extensions ['colcon_pkg']
+[0.850s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t7) by extension 'colcon_pkg'
+[0.850s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t7) by extensions ['colcon_meta']
+[0.850s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t7) by extension 'colcon_meta'
+[0.850s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t7) by extensions ['ros']
+[0.850s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t7) by extension 'ros'
+[0.850s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t7) by extensions ['cmake', 'python']
+[0.850s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t7) by extension 'cmake'
+[0.850s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t7) by extension 'python'
+[0.851s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t7) by extensions ['python_setup_py']
+[0.851s] Level 1:colcon.colcon_core.package_identification:_identify(bascket_t7) by extension 'python_setup_py'
+[0.851s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.851s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.851s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.851s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.852s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.852s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.852s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.852s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.852s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.852s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.853s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.853s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.853s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.853s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.853s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.853s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.853s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.853s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.854s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.854s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.854s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.854s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.854s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.854s] Level 1:colcon.colcon_core.package_identification:_identify(src/guardian_control) by extensions ['ignore', 'ignore_ament_install']
+[0.854s] Level 1:colcon.colcon_core.package_identification:_identify(src/guardian_control) by extension 'ignore'
+[0.854s] Level 1:colcon.colcon_core.package_identification:_identify(src/guardian_control) by extension 'ignore_ament_install'
+[0.855s] Level 1:colcon.colcon_core.package_identification:_identify(src/guardian_control) by extensions ['colcon_pkg']
+[0.855s] Level 1:colcon.colcon_core.package_identification:_identify(src/guardian_control) by extension 'colcon_pkg'
+[0.855s] Level 1:colcon.colcon_core.package_identification:_identify(src/guardian_control) by extensions ['colcon_meta']
+[0.855s] Level 1:colcon.colcon_core.package_identification:_identify(src/guardian_control) by extension 'colcon_meta'
+[0.855s] Level 1:colcon.colcon_core.package_identification:_identify(src/guardian_control) by extensions ['ros']
+[0.855s] Level 1:colcon.colcon_core.package_identification:_identify(src/guardian_control) by extension 'ros'
+[0.862s] DEBUG:colcon.colcon_core.package_identification:Package 'src/guardian_control' with type 'ros.ament_python' and name 'guardian_control'
+[0.862s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.862s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.862s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.862s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.862s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.959s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.959s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.966s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/genozen/Documents/the_gaurdian/install
+[0.969s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 292 installed packages in /opt/ros/humble
+[0.974s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.082s] Level 5:colcon.colcon_core.verb:set package 'guardian_control' build argument 'cmake_args' from command line to 'None'
+[1.082s] Level 5:colcon.colcon_core.verb:set package 'guardian_control' build argument 'cmake_target' from command line to 'None'
+[1.083s] Level 5:colcon.colcon_core.verb:set package 'guardian_control' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.083s] Level 5:colcon.colcon_core.verb:set package 'guardian_control' build argument 'cmake_clean_cache' from command line to 'False'
+[1.083s] Level 5:colcon.colcon_core.verb:set package 'guardian_control' build argument 'cmake_clean_first' from command line to 'False'
+[1.083s] Level 5:colcon.colcon_core.verb:set package 'guardian_control' build argument 'cmake_force_configure' from command line to 'False'
+[1.083s] Level 5:colcon.colcon_core.verb:set package 'guardian_control' build argument 'ament_cmake_args' from command line to 'None'
+[1.083s] Level 5:colcon.colcon_core.verb:set package 'guardian_control' build argument 'catkin_cmake_args' from command line to 'None'
+[1.083s] Level 5:colcon.colcon_core.verb:set package 'guardian_control' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.083s] DEBUG:colcon.colcon_core.verb:Building package 'guardian_control' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/genozen/Documents/the_gaurdian/build/guardian_control', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/genozen/Documents/the_gaurdian/install/guardian_control', 'merge_install': False, 'path': '/home/genozen/Documents/the_gaurdian/src/guardian_control', 'symlink_install': True, 'test_result_base': None}
+[1.084s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.086s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.087s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/genozen/Documents/the_gaurdian/src/guardian_control' with build type 'ament_python'
+[1.087s] Level 1:colcon.colcon_core.shell:create_environment_hook('guardian_control', 'ament_prefix_path')
+[1.095s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.096s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/genozen/Documents/the_gaurdian/install/guardian_control/share/guardian_control/hook/ament_prefix_path.ps1'
+[1.098s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/genozen/Documents/the_gaurdian/install/guardian_control/share/guardian_control/hook/ament_prefix_path.dsv'
+[1.100s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/genozen/Documents/the_gaurdian/install/guardian_control/share/guardian_control/hook/ament_prefix_path.sh'
+[1.102s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.102s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.741s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/genozen/Documents/the_gaurdian/src/guardian_control'
+[1.741s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.742s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.646s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/genozen/Documents/the_gaurdian/build/guardian_control': PYTHONPATH=/home/genozen/Documents/the_gaurdian/build/guardian_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/genozen/Documents/the_gaurdian/install/guardian_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/genozen/Documents/the_gaurdian/build/guardian_control/build --no-deps symlink_data
+[3.765s] Level 1:colcon.colcon_core.shell:create_environment_hook('guardian_control', 'pythonpath_develop')
+[3.766s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/genozen/Documents/the_gaurdian/build/guardian_control/share/guardian_control/hook/pythonpath_develop.ps1'
+[3.768s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/genozen/Documents/the_gaurdian/build/guardian_control' returned '0': PYTHONPATH=/home/genozen/Documents/the_gaurdian/build/guardian_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/genozen/Documents/the_gaurdian/install/guardian_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/genozen/Documents/the_gaurdian/build/guardian_control/build --no-deps symlink_data
+[3.770s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/genozen/Documents/the_gaurdian/build/guardian_control/share/guardian_control/hook/pythonpath_develop.dsv'
+[3.771s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/genozen/Documents/the_gaurdian/build/guardian_control/share/guardian_control/hook/pythonpath_develop.sh'
+[3.783s] Level 1:colcon.colcon_core.environment:checking '/home/genozen/Documents/the_gaurdian/install/guardian_control' for CMake module files
+[3.784s] Level 1:colcon.colcon_core.environment:checking '/home/genozen/Documents/the_gaurdian/install/guardian_control' for CMake config files
+[3.786s] Level 1:colcon.colcon_core.environment:checking '/home/genozen/Documents/the_gaurdian/install/guardian_control/lib'
+[3.787s] Level 1:colcon.colcon_core.environment:checking '/home/genozen/Documents/the_gaurdian/install/guardian_control/bin'
+[3.787s] Level 1:colcon.colcon_core.environment:checking '/home/genozen/Documents/the_gaurdian/install/guardian_control/lib/pkgconfig/guardian_control.pc'
+[3.788s] Level 1:colcon.colcon_core.environment:checking '/home/genozen/Documents/the_gaurdian/install/guardian_control/lib/python3.10/site-packages'
+[3.788s] Level 1:colcon.colcon_core.shell:create_environment_hook('guardian_control', 'pythonpath')
+[3.789s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/genozen/Documents/the_gaurdian/install/guardian_control/share/guardian_control/hook/pythonpath.ps1'
+[3.791s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/genozen/Documents/the_gaurdian/install/guardian_control/share/guardian_control/hook/pythonpath.dsv'
+[3.792s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/genozen/Documents/the_gaurdian/install/guardian_control/share/guardian_control/hook/pythonpath.sh'
+[3.794s] Level 1:colcon.colcon_core.environment:checking '/home/genozen/Documents/the_gaurdian/install/guardian_control/bin'
+[3.795s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(guardian_control)
+[3.796s] INFO:colcon.colcon_core.shell:Creating package script '/home/genozen/Documents/the_gaurdian/install/guardian_control/share/guardian_control/package.ps1'
+[3.799s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/genozen/Documents/the_gaurdian/install/guardian_control/share/guardian_control/package.dsv'
+[3.802s] INFO:colcon.colcon_core.shell:Creating package script '/home/genozen/Documents/the_gaurdian/install/guardian_control/share/guardian_control/package.sh'
+[3.805s] INFO:colcon.colcon_core.shell:Creating package script '/home/genozen/Documents/the_gaurdian/install/guardian_control/share/guardian_control/package.bash'
+[3.809s] INFO:colcon.colcon_core.shell:Creating package script '/home/genozen/Documents/the_gaurdian/install/guardian_control/share/guardian_control/package.zsh'
+[3.812s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/genozen/Documents/the_gaurdian/install/guardian_control/share/colcon-core/packages/guardian_control)
+[3.813s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[3.814s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[3.815s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[3.815s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[3.836s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[3.836s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[3.837s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[3.886s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[3.888s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/genozen/Documents/the_gaurdian/install/local_setup.ps1'
+[3.892s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/genozen/Documents/the_gaurdian/install/_local_setup_util_ps1.py'
+[3.897s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/genozen/Documents/the_gaurdian/install/setup.ps1'
+[3.901s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/genozen/Documents/the_gaurdian/install/local_setup.sh'
+[3.904s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/genozen/Documents/the_gaurdian/install/_local_setup_util_sh.py'
+[3.906s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/genozen/Documents/the_gaurdian/install/setup.sh'
+[3.910s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/genozen/Documents/the_gaurdian/install/local_setup.bash'
+[3.912s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/genozen/Documents/the_gaurdian/install/setup.bash'
+[3.915s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/genozen/Documents/the_gaurdian/install/local_setup.zsh'
+[3.917s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/genozen/Documents/the_gaurdian/install/setup.zsh'
